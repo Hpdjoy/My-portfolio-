@@ -452,11 +452,16 @@ footer {
         top: 100%;
         left: 0;
         width: 100%;
-        background: var(--primary-medium);
+        background: rgba(10, 25, 47, 0.4);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
         flex-direction: column;
         padding: 2rem;
         text-align: center;
         box-shadow: 0 10px 30px -10px rgba(2, 12, 27, 0.7);
+        z-index: 1000;
+        border-top: 1px solid rgba(100, 255, 218, 0.15);
+        border-bottom: 1px solid rgba(100, 255, 218, 0.1);
     }
 
     .nav-links.active {
@@ -484,26 +489,41 @@ footer {
     pointer-events: none;
     filter: url('#goo');
 }
+
 .liquid-bg .blob {
     position: absolute;
     top: 0;
     left: 0;
     border-radius: 50%;
-    background: radial-gradient(circle at 30% 30%, rgba(100,255,218,0.95), rgba(0,180,216,0.7) 40%, rgba(0,120,180,0.35) 70%);
+    background: radial-gradient(circle at 30% 30%, rgba(100, 255, 218, 0.95), rgba(0, 180, 216, 0.7) 40%, rgba(0, 120, 180, 0.35) 70%);
     mix-blend-mode: screen;
     will-change: transform, width, height;
-    transform: translate3d(0,0,0);
+    transform: translate3d(0, 0, 0);
     filter: blur(30px);
     opacity: 0.9;
 }
-.svg-filters { width:0; height:0; position:absolute; }
+
+.svg-filters {
+    width: 0;
+    height: 0;
+    position: absolute;
+}
 
 /* Ensure main content sits above the background */
-header, .hero, .projects, .contact, footer {
+
+.projects,
+.contact, 
+footer{
+    position: relative;
+    z-index: 100;
+}
+.hero{
     position: relative;
     z-index: 1;
 }
 
 @media (max-width: 768px) {
-  .liquid-bg { display: none; }
+    .liquid-bg {
+        display: none;
+    }
 }
